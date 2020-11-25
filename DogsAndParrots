@@ -1,0 +1,214 @@
+using System;
+namespace Inheritance
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dog scoobydoo = new Dog("scoobydoo")
+            {
+                Breed = "great dane",
+                Color = "brown"
+            };
+
+            Person Teona = new Person()
+            {
+                Animal = scoobydoo
+            };
+
+            Teona.Animal.Run();
+
+            Console.WriteLine(scoobydoo.ToString());
+
+            Console.ReadKey();
+        }
+    }
+
+    public class Person
+    {
+        public string Name { get; set; }
+
+        public FourLeggedAnimal Animal { get; set; }
+    }
+
+    public abstract class Animal
+    {
+        public string Name { get; set; }
+
+        public abstract void Rest();
+
+        public abstract void Sit();
+
+        public Animal(string name)
+        {
+            Name = name;
+            Console.WriteLine("Animal constructor");
+        }
+    }
+
+    public abstract class FourLeggedAnimal : Animal
+    {
+        public FourLeggedAnimal(string name) : base(name)
+        {
+            Console.WriteLine("FourLeggedAnimal constructor");
+        }
+
+        public override void Sit()
+        {
+            Console.WriteLine("FourLeggedAnimal is sitting");
+        }
+
+        public override void Rest()
+        {
+            Console.WriteLine("FourLeggedAnimal is resting");
+        }
+
+        public virtual void Run()
+        {
+            Console.WriteLine("FourLeggedAnimal is running");
+        }
+
+        public virtual void Child()
+        {
+            Console.WriteLine("FourLeggedAnimal has a child now");
+        }
+    }
+    public abstract class Bird : Animal
+    {
+        public Bird(string name) : base(name)
+        {
+            Console.WriteLine("Bird constructor");
+        }
+
+        public override void Sit()
+        {
+            Console.WriteLine("Bird is sitting");
+        }
+
+        public override void Rest()
+        {
+            Console.WriteLine("Bird is resting");
+        }
+
+        public virtual void Egg()
+        {
+            Console.WriteLine("Bird has an egg now");
+        }
+
+        public virtual void Fly()
+        {
+            Console.WriteLine("Bird is flying");
+        }
+    }
+
+    public sealed class Dog : FourLeggedAnimal
+    {
+        public Dog(string name) : base(name)
+        {
+            Console.WriteLine("Dog constructor");
+        }
+
+        public string Breed { get; set; }
+        public string Color { get; set; }
+
+        public override void Sit()
+        {
+            Console.WriteLine("The dog is sitting");
+        }
+
+        public override void Rest()
+        {
+            Console.WriteLine("The dog is resting");
+        }
+
+        public override void Child()
+        {
+            base.Child();
+            Console.WriteLine("The dog has a child now");
+        }
+
+        public override void Run()
+        {
+            base.Run();
+            Console.WriteLine("The Dog is running");
+        }
+
+        public override string ToString()
+        {
+            return $"The dog's name is {Name}";
+        }
+    }
+
+    public sealed class Cat : FourLeggedAnimal
+    {
+        public Cat(string name) : base(name) { }
+
+        public string Breed { get; set; }
+
+        public string Color { get; set; }
+
+        public override void Sit()
+        {
+            Console.WriteLine("The cat is sitting");
+        }
+
+        public override void Rest()
+        {
+            Console.WriteLine("The cat is resting");
+        }
+
+        public override void Child()
+        {
+            base.Child();
+            Console.WriteLine("The cat has a child now");
+        }
+
+        public override void Run()
+        {
+            base.Run();
+            Console.WriteLine("The cat is running");
+        }
+
+        public override string ToString()
+        {
+            return $"The cat's name is {Name}";
+        }
+    }
+    public sealed class Parrot : Bird
+    {
+        public Parrot(string name) : base(name)
+        {
+            Console.WriteLine("Parrot constructor");
+        }
+
+        public string Breed { get; set; }
+        public string Color { get; set; }
+
+        public override void Sit()
+        {
+            Console.WriteLine("The parrot is sitting");
+        }
+
+        public override void Rest()
+        {
+            Console.WriteLine("The parrot is resting");
+        }
+
+        public override void Egg()
+        {
+            base.Egg();
+            Console.WriteLine("The parrot has a child now");
+        }
+
+        public override void Fly()
+        {
+            base.Fly();
+            Console.WriteLine("The parrot is flying");
+        }
+
+        public override string ToString()
+        {
+            return $"The perrot's name is {Name}";
+        }
+    }
+}
