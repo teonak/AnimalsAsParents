@@ -1,0 +1,25 @@
+using System;
+using System.Text;
+
+namespace Problems
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            for (int i = 1;i <= n; i++){
+                int input = int.Parse(Console.ReadLine());
+                if (input % 3 == 0)
+                {
+                    Console.Write("Fizz");
+                }
+                if (input % 5 == 0)
+                {
+                    Console.Write("Buzz");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
