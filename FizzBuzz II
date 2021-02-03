@@ -1,0 +1,33 @@
+using System;
+using System.Text;
+
+namespace Problems
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            StringBuilder partsOfOutput = new StringBuilder();
+            int n = int.Parse(Console.ReadLine());
+            string[] output = new string[n+1];
+            for (int i = 1;i <= n; i++){
+                int input = int.Parse(Console.ReadLine());
+                if (input % 3 == 0)
+                {
+                    partsOfOutput.Append("Fizz");
+                }
+                if (input % 5 == 0)
+                {
+                    partsOfOutput.Append("Buzz");
+                }
+                output[i] = Convert.ToString(partsOfOutput);
+                partsOfOutput.Clear();
+            }
+            for(int i = 1; i <= n; i++)
+            {
+
+                Console.WriteLine(output[i]);
+            }
+        }
+    }
+}
